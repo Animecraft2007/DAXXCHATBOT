@@ -17,15 +17,10 @@ from nexichat.modules.helpers import CHATBOT_ON, is_admins
     (filters.text | filters.sticker | filters.group) & ~filters.private & ~filters.bot, group=4
 )
 async def chatbot_text(client: Client, message: Message):
-    try:
-        if (
-            message.text.startswith("!")
-            or message.text.startswith("/")
-            or message.text.startswith("?")
-            or message.text.startswith("@")
-            or message.text.startswith("#")
-        ):
-            return
+    # Ignore commands
+    if message.text and any(message.text.startswith(prefix) for prefix in ["!", "/", "?", "@", "#"]):
+        return
+    
     except Exception:
         pass
     chatdb = MongoClient(MONGO_URL)
@@ -106,15 +101,10 @@ async def chatbot_text(client: Client, message: Message):
     (filters.sticker | filters.group | filters.text) & ~filters.private & ~filters.bot, group=4
 )
 async def chatbot_sticker(client: Client, message: Message):
-    try:
-        if (
-            message.text.startswith("!")
-            or message.text.startswith("/")
-            or message.text.startswith("?")
-            or message.text.startswith("@")
-            or message.text.startswith("#")
-        ):
-            return
+    # Ignore commands
+    if message.text and any(message.text.startswith(prefix) for prefix in ["!", "/", "?", "@", "#"]):
+        return
+    
     except Exception:
         pass
     chatdb = MongoClient(MONGO_URL)
@@ -197,15 +187,10 @@ async def chatbot_sticker(client: Client, message: Message):
     (filters.text | filters.sticker | filters.group) & ~filters.private & ~filters.bot, group=4
 )
 async def chatbot_pvt(client: Client, message: Message):
-    try:
-        if (
-            message.text.startswith("!")
-            or message.text.startswith("/")
-            or message.text.startswith("?")
-            or message.text.startswith("@")
-            or message.text.startswith("#")
-        ):
-            return
+    # Ignore commands
+    if message.text and any(message.text.startswith(prefix) for prefix in ["!", "/", "?", "@", "#"]):
+        return
+    
     except Exception:
         pass
     chatdb = MongoClient(MONGO_URL)
@@ -246,15 +231,10 @@ async def chatbot_pvt(client: Client, message: Message):
     group=4,
 )
 async def chatbot_sticker_pvt(client: Client, message: Message):
-    try:
-        if (
-            message.text.startswith("!")
-            or message.text.startswith("/")
-            or message.text.startswith("?")
-            or message.text.startswith("@")
-            or message.text.startswith("#")
-        ):
-            return
+    # Ignore commands
+    if message.text and any(message.text.startswith(prefix) for prefix in ["!", "/", "?", "@", "#"]):
+        return
+    
     except Exception:
         pass
     chatdb = MongoClient(MONGO_URL)
